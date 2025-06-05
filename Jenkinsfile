@@ -53,7 +53,8 @@ pipeline{
         }
         steps{
             sh'''
-            java -jar /target/*.jar
+            pwd 
+            java -jar target/*.jar
 
             '''
         }
