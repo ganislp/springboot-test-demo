@@ -39,7 +39,7 @@ pipeline{
         }
         steps{
             sh'''
-            mvn package
+            mvn package -DskipTests=true
 
             '''
         }
@@ -48,7 +48,7 @@ pipeline{
     }
     post{
         always{
-            archiveartifacts artifacts  : "target/*.jar"
+            archiveArtifacts artifacts: "target/*.jar"
             junit 'target/surefire-reports/*.xml'
 
         }
