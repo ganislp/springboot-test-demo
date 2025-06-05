@@ -19,6 +19,7 @@ pipeline{
             }
         }
     stage('Unit Test'){
+        
         agent{
             docker{
                 image 'maven:3.8.3-openjdk-17'
@@ -42,6 +43,21 @@ pipeline{
             mvn package -DskipTests=true
 
             '''
+        }
+    }
+
+    stage('parallel'){
+        parallel{
+            stage('step1'){
+                sh'''
+                echo "step1"
+                '''
+            }
+            stage('step2'){
+                sh'''
+                 echo "step2"
+                '''
+            }
         }
     }
 
